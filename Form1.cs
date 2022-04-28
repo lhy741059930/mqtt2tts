@@ -50,6 +50,7 @@ namespace MqttToTTS
                 //初始化MQTT连接
                 string topic = textBox2.Text;
                 string host = textBox1.Text;
+                clientId = Guid.NewGuid().ToString();
                 if (!string.IsNullOrEmpty(host) && !string.IsNullOrEmpty(topic))
                 {
                     // 实例化Mqtt客户端 
@@ -57,7 +58,7 @@ namespace MqttToTTS
                     // 注册接收消息事件 
                     mqttClient.MqttMsgPublishReceived += client_MqttMsgPublishReceived;
 
-                    clientId = Guid.NewGuid().ToString();
+                    
                     mqttClient.Connect(clientId);
 
                     button1.Text = "断开";
